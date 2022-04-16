@@ -1,7 +1,14 @@
-import { Router } from 'express';
-import authenticationMiddleWare from '../middleware/authentication.middleware';
+import { Router } from "express";
+import UserAction from "../actions/user.actions";
+import LoginDTO from "../dto/login.dto";
+import authenticationMiddleWare from "../middleware/authentication.middleware";
+import validateMiddleware from "../middleware/validate.middleware";
+import bodyParser from "body-parser";
+import doubleCheckMiddleware from "../middleware/doubleCheck.middleware";
+import * as sessionController from "../controllers/sessions.controllers";
 
-const PATH = '/tokens';
+const jsonParser = bodyParser.json();
+const PATH = "/tokens";
 const router = Router();
 
 /**
@@ -18,6 +25,12 @@ const router = Router();
  *       401:
  *        description: No autorizado
  */
-router.get(`${PATH}`, authenticationMiddleWare);
+router.get(
+  `${PATH}`,
+  jsonParser,
+  validateMiddleware(LoginDTO, UserAction.VERIFY_PASSWORD, true),
+  doubleCheckMiddleware,
+  sessionController.info
+);
 
 export default router;

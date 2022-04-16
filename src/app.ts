@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import errorMiddleware from './middleware/error.middleware';
 import notesRouter from './routes/notes.route';
@@ -33,7 +33,6 @@ class App {
     // this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(cookieParser());
- 
   }
 
   private initControllers() {
@@ -49,6 +48,15 @@ class App {
       })
     );
     this.app.use('/api-doc.json', swaggerJSDoc)
+    this.app.use(this.status)
+  }
+
+  private status(req: Request, res: Response) {
+    const status = mongoose.connection.readyState === 1;
+    res.json({
+      status,
+      date: new Date()
+    });
   }
 
   private initErrorHandlig() {

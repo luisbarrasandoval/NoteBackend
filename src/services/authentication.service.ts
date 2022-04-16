@@ -13,7 +13,7 @@ import { userID } from "../interfaces/RequestWithUser";
 export interface Register extends Omit<IUser, "_id" | "create_at"> {}
 
 const create_session = async (user: IUser, ip: string, userAgent: string) => {
-  const token = createToken(user);
+  const {token, expiresIn} = createToken(user);
   const new_session = await sessionsModel.create({
     user: user,
     userAgent: userAgent,
@@ -22,6 +22,7 @@ const create_session = async (user: IUser, ip: string, userAgent: string) => {
     updatedAt: new Date(),
     status: true,
     token,
+    expiresIn: expiresIn,
   });
 
   return { token, new_session };

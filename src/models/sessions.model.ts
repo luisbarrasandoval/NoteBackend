@@ -6,14 +6,17 @@ const sessionScheme = new Schema<ISession>({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+
   userAgent: {
     type: String,
     required: true
   },
+
   ip: {
     type: String,
     required: true
   },
+
   createdAt: {
     type: Date,
     default: Date.now
@@ -32,7 +35,18 @@ const sessionScheme = new Schema<ISession>({
   token: {
     type: String,
     required: true
+  },
+
+  doubleCheck: {
+    type: Date,
+    required: false
+  },
+
+  expiresIn: {
+    type: Number,
+    required: true
   }
+
 });
 
 sessionScheme.set('toJSON', {

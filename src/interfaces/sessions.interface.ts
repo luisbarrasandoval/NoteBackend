@@ -1,8 +1,8 @@
 import { Types } from 'mongoose';
+import IUser from './user.interface';
 
 interface ISession {
   _id: string;
-  // ref mongoose
   user: Types.ObjectId,
   userAgent: string;
   ip: string;
@@ -10,6 +10,8 @@ interface ISession {
   updatedAt: Date;
   status: boolean;
   token: string;
+  doubleCheck: Date;
+  expiresIn: number;
 }
 
 export default ISession;

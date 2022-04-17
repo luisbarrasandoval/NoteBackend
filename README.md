@@ -13,7 +13,7 @@ Typescript and express.js
   - double authentication
   - CSRF *
   
-- Mobile App *
+- <a href="https://github.com/luisbarrasandoval/NoteApp">Mobile App *</a>
   - React native
 
 # start

@@ -1,4 +1,4 @@
-import HttpException from "./HttpException";
+import HttpException from './HttpException';
 
 class NoteNotFoundException extends HttpException {
   constructor(id: string) {

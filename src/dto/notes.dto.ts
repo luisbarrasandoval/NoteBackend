@@ -5,47 +5,46 @@ import {
   Max,
   Min,
   IsDefined,
-  IsMongoId
+  IsMongoId,
 } from 'class-validator';
 
 import 'reflect-metadata';
 import HttpAction from '../actions/http.actions';
 
 class NotesDTO {
-
   @IsDefined({
-    groups: [HttpAction.UPDATE, HttpAction.GET, HttpAction.DELETE]
+    groups: [HttpAction.UPDATE, HttpAction.GET, HttpAction.DELETE],
   })
   @IsMongoId({
-    groups: [HttpAction.UPDATE, HttpAction.GET, HttpAction.DELETE]
+    groups: [HttpAction.UPDATE, HttpAction.GET, HttpAction.DELETE],
   })
   public _id!: string;
 
-  
+
   @IsString({
-    groups: [HttpAction.UPDATE]
+    groups: [HttpAction.UPDATE],
   })
   public userID!: string;
 
   @MinLength(2)
   @IsString({
-    groups: [HttpAction.CREATE, HttpAction.UPDATE]
+    groups: [HttpAction.CREATE, HttpAction.UPDATE],
   })
   public title!: string;
 
   @IsBoolean({
-    groups: [HttpAction.CREATE, HttpAction.UPDATE]
+    groups: [HttpAction.CREATE, HttpAction.UPDATE],
   })
   public status!: boolean;
 
   @IsString({
-    groups: [HttpAction.CREATE, HttpAction.UPDATE]
+    groups: [HttpAction.CREATE, HttpAction.UPDATE],
   })
   public detail!: boolean;
 
   @Min(0)
   @Max(3, {
-    groups: [HttpAction.CREATE, HttpAction.UPDATE]
+    groups: [HttpAction.CREATE, HttpAction.UPDATE],
   })
   public prioridad!: number;
 
@@ -60,7 +59,7 @@ class NotesDTO {
   // public expireDate!: Date;
 
   @IsString({
-    groups: [HttpAction.CREATE, HttpAction.UPDATE]
+    groups: [HttpAction.CREATE, HttpAction.UPDATE],
   })
   public categoria!: string;
 }

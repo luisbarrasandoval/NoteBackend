@@ -1,5 +1,5 @@
-import { IsEmail, IsString, MinLength } from "class-validator";
-import UserAction from "../actions/user.actions";
+import {IsEmail, IsString, MinLength} from 'class-validator';
+import UserAction from '../actions/user.actions';
 
 // email execption
 
@@ -14,7 +14,7 @@ class LoginDTO {
   public email!: string;
 
   @IsString({
-    message: "El password no es valido",
+    message: 'El password no es valido',
     groups: [
       UserAction.LOGIN,
       UserAction.REGISTER,
@@ -23,7 +23,7 @@ class LoginDTO {
     ],
   })
   @MinLength(8, {
-    message: "El password debe tener al menos 8 caracteres",
+    message: 'El password debe tener al menos 8 caracteres',
     groups: [
       UserAction.LOGIN,
       UserAction.REGISTER,

@@ -1,4 +1,4 @@
-import { NextFunction, Response } from 'express';
+import {NextFunction, Response} from 'express';
 import mongoose from 'mongoose';
 import FilterNotesDto from '../dto/filter.notes.dto';
 import HttpException from '../exceptions/HttpException';
@@ -38,7 +38,7 @@ const create = (req: RequestWithUser, res: Response) => {
 };
 
 const remove = (req: RequestWithUser, res: Response, next: NextFunction) => {
-  const { _id: id }: INotes = req.body;
+  const {_id: id}: INotes = req.body;
   const state = notesServices.remove(req.user, id);
   state.then((result) => {
     if (!result) {
@@ -50,7 +50,7 @@ const remove = (req: RequestWithUser, res: Response, next: NextFunction) => {
 };
 
 const update = (req: RequestWithUser, res: Response, next: NextFunction) => {
-  const { _id: id, ...data }: INotes = req.body;
+  const {_id: id, ...data}: INotes = req.body;
   const state = notesServices.update(req.user, id, data);
 
   state.then((result) => {
@@ -66,5 +66,5 @@ export default {
   getById,
   create,
   remove,
-  update
+  update,
 };

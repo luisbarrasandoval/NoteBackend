@@ -1,4 +1,4 @@
-import { Types } from 'mongoose';
+import {Types} from 'mongoose';
 import IUser from './user.interface';
 
 interface ISession {

@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import IUser from "../interfaces/user.interface";
+import jwt from 'jsonwebtoken';
+import IUser from '../interfaces/user.interface';
 
-import authConfig from "../config/auth.config";
+import authConfig from '../config/auth.config';
 
 interface DataStoredInToken {
   _id: string;
@@ -18,11 +18,11 @@ const createToken = (user: IUser, expire: number | undefined = undefined) => {
   const x = expire || authConfig.expiresIn;
 
   const token = jwt.sign(payload, secret as string, {
-    expiresIn:x
+    expiresIn: x,
   });
 
   return {token, expiresIn: Date.now() + x * 60 * 1000};
 };
 
-export { DataStoredInToken };
+export {DataStoredInToken};
 export default createToken;

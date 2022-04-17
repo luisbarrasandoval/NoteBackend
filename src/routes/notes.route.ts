@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import HttpAction from '../actions/http.actions';
 import todoController from '../controllers/notes.controllers';
 import NotesDTO from '../dto/notes.dto';
@@ -13,36 +13,36 @@ const router = Router();
 const jsonParser = bodyParser.json();
 
 router.get(
-  `${PATH}`,
-  authenticationMiddleWare,
-  validateMiddleware(FilterNotesDto, undefined, false, 'query'),
-  todoController.getAll
+    `${PATH}`,
+    authenticationMiddleWare,
+    validateMiddleware(FilterNotesDto, undefined, false, 'query'),
+    todoController.getAll,
 );
 
 router.get(`${PATH}/:id`, authenticationMiddleWare, todoController.getById);
 
 router.post(
-  `${PATH}`,
-  jsonParser,
-  authenticationMiddleWare,
-  validateMiddleware(NotesDTO, HttpAction.CREATE),
-  todoController.create
+    `${PATH}`,
+    jsonParser,
+    authenticationMiddleWare,
+    validateMiddleware(NotesDTO, HttpAction.CREATE),
+    todoController.create,
 );
 
 router.delete(
-  `${PATH}`,
-  jsonParser,
-  authenticationMiddleWare,
-  validateMiddleware(NotesDTO, HttpAction.DELETE, true),
-  todoController.remove
+    `${PATH}`,
+    jsonParser,
+    authenticationMiddleWare,
+    validateMiddleware(NotesDTO, HttpAction.DELETE, true),
+    todoController.remove,
 );
 
 router.put(
-  `${PATH}`,
-  jsonParser,
-  authenticationMiddleWare,
-  validateMiddleware(NotesDTO, HttpAction.UPDATE, true),
-  todoController.update
+    `${PATH}`,
+    jsonParser,
+    authenticationMiddleWare,
+    validateMiddleware(NotesDTO, HttpAction.UPDATE, true),
+    todoController.update,
 );
 
 export default router;

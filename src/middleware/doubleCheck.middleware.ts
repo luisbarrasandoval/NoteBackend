@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from "express";
-import authenticationMiddleWare from "./authentication.middleware";
+import {Request, Response, NextFunction} from 'express';
+import authenticationMiddleWare from './authentication.middleware';
 
 const doubleCheckMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
+    req: Request,
+    res: Response,
+    next: NextFunction,
 ) => {
   authenticationMiddleWare(req, res, next, true);
 };

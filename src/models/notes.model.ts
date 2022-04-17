@@ -5,29 +5,29 @@ const NotesScheme = new mongoose.Schema<INotes>({
   create_at: Date,
   userID: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
 
   status: {
     type: Boolean,
-    required: true
+    required: true,
   },
   detail: {
     type: String,
-    required: true
+    required: true,
   },
   prioridad: {
     type: Number,
-    required: true
+    required: true,
   },
   categoria: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 NotesScheme.set('toJSON', {
@@ -36,7 +36,7 @@ NotesScheme.set('toJSON', {
     delete ret._id;
     delete ret.__v;
     delete ret.userID;
-  }
+  },
 });
 
 export default mongoose.model<INotes>('Notes', NotesScheme);

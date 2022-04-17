@@ -1,10 +1,10 @@
 # Notes API
 Typescript and express.js
-
+`* lack`
 - JWT authentication
   - activity session
   - delete other active sessions
-  - session limit per user
+  - session limit per user *
   - token blacklist
   - etc
 
